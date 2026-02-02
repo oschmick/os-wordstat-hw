@@ -8,39 +8,32 @@
 #include "menu.h"
 
 #define MAX_INPUT_LEN 128	/** maximum allowed input length */
-#define STOP_CHAR = '#'
+#define STOP_CHAR '#'
 
-void getStrings(char *input[]) {
-	printf("Enter strings (%c to stop): \n", STOP_CHAR);
-	while (1) {
-		int len = strlen(fgets(input, sizeof(input), stdin));
-		if (len == 2 && input[0] == '#') {
-			break;
-		}
-
-	}
-}
+void getStrings(wordstats_t *stats, char *input, int inputSize);
 
 /**
  * @brief Main function
  */
 int main(int argc, char *argv[]) {
-	struct wordstats_t stats = {0,0,0,{0}};
+	wordstats_t stats = {0,0,0,{0}};
 	char input[MAX_INPUT_LEN];
 	int choice;
 
-	getStrings(&input);
+	getStrings(&stats, input, MAX_INPUT_LEN);
 
 	while (1) {
 		printMenu();
-		scanf("%d", &choice);
+		if (scanf("%d", &choice) != 1) {
+			break;
+		}
 
 		if (choice == 1) {
-			// TODO
+			printFrequencies(&stats);
 		} else if (choice == 2) {
-			// TODO
+			printHistogram(&stats);
 		} else if (choice == 3) {
-			getStrings(&input);
+			getStrings(&stats, input, MAX_INPUT_LEN);
 		} else {
 			break;
 		}
@@ -48,4 +41,19 @@ int main(int argc, char *argv[]) {
 
 	printf("Exiting...\n");
 	return 0;
+}
+
+void getStrings(wordstats_t *stats, char *input, int inputSize) {
+	printf("Enter strings (# to stop): \n");
+	while (1) {
+		if (fgets(input, inputSize, stdin) == NULL) {
+			break;
+		}
+		if (input[0] == '#') {
+			break;
+		}
+		if (input[0] != '\0') {
+			updateStats(stats, input);
+		}
+	}
 }
