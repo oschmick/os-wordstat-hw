@@ -8,8 +8,8 @@
 // TODO - menu functions
 void printMenu() {
     printf("*** WORD STATS MENU ***");
-    printf("Enter 1 to print frequencies.\n
-            Enter 2 to print histogram.\n
-            Enter 3 to return to inputting more strings.\n
-            Enter 4 to quit.\n");
+    printf("Enter 1 to print frequencies.\n");
+    printf("Enter 2 to print histogram.\n");
+    printf("Enter 3 to return to inputting more strings.\n");
+    printf("Enter 4 to quit.\n");
 }
