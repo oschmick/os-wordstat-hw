@@ -8,5 +8,6 @@
 // menu constants
 
 // menu function declarations
+void printMenu();
 
 #endif /* MENU_H_ */
