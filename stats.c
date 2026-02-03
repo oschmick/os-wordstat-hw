@@ -90,7 +90,11 @@ void printHistogram(wordstats_t *stats) {
 		printf("\n");
 	}
 
-	printf("a b c d e f g h i j k l m n o p q r s t u v w x y z \n");
+	for (char c='a'; c<='z'; ++c) {
+		printf("%c ", c);
+	}
+
+	printf("\n");
 
 	for (int i=0; i<length; i++) {
 		printf("%d ", alphabet[i]);
