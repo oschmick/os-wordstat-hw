@@ -49,7 +49,7 @@ void getStrings(wordstats_t *stats, char *input, int inputSize) {
 		if (fgets(input, inputSize, stdin) == NULL) {
 			break;
 		}
-		if (input[0] == '#') {
+		if (input[0] == '#' && input[1] == '\n') {
 			break;
 		}
 		if (input[0] != '\0') {
